@@ -1,0 +1,27 @@
+{
+  // For more information, go to: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "cpp - Generate and debug the current file",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "Generate debug executables",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/build/Debug/${relativeFileDirname}/${fileBasenameNoExtension}",
+      "args": [],
+      "stopAtEntry": false,
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "pretty-print for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "miDebuggerPath": "/usr/bin/gdb"
+    }
+  ]
+}
