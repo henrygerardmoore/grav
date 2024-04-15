@@ -1,0 +1,12 @@
+BasedOnStyle: Google
+DerivePointerAlignment: false
+PointerAlignment: Left
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '"([A-Za-z0-9.\Q/-_\E])+"'
+    Priority: 1
+  - Regex: '<(catch2|boost|Eigen|rclcpp|rclcpp_action)\/.*>'
+  - Regex: '<([A-Za-z0-9\Q/-_\E])+>'
+    Priority: 2
+  - Regex: '<([A-Za-z0-9.\Q/-_\E])+>'
+    Priority: 4
