@@ -14,9 +14,8 @@ find_package(EnTT REQUIRED)
 
 add_executable(grav src/grav.cpp src/input_handling.cpp)
 
-target_compile_features(grav  PUBLIC cxx_std_20)
+target_compile_features(grav PUBLIC cxx_std_20)
 target_include_directories(
-  grav
-  PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
-target_link_libraries(grav PRIVATE quill::quill sfml-graphics
-                                   EnTT::EnTT Eigen3::Eigen)
+  grav PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+target_link_libraries(grav PRIVATE quill::quill sfml-graphics EnTT::EnTT
+                                   Eigen3::Eigen)
