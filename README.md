@@ -17,3 +17,7 @@ cmake --build --preset conan-release --parallel
 ```
 
 Then run with `./build/Release/grav`.
+
+## Contributing
+Feel free to open an issue (feature requests, bugs, or bad code that needs to be cleaned up) or make a pull request!
+If you want to make a pull request, please [install pre-commit](https://pre-commit.com/#install) and run `pre-commit install` in the directory prior to making your pull request (until CI is set up).
