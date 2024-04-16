@@ -1,7 +1,12 @@
 # grav
+
+https://github.com/henrygerardmoore/grav/assets/44307180/ba8dc1bc-df7a-4407-86e5-d2142297b42f
+
 N-body gravity simulator using C++, EnTT, SFML, CMake, Quill, Eigen, and Conan
 
-Requirements
+
+## Building
+### Requirements
  - [Conan 2](https://docs.conan.io/2/installation.html), then use the following commands
  - [CMake](https://cmake.org/download/)
 
