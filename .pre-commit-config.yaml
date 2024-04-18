@@ -63,7 +63,7 @@ repos:
       - id: clang-format
         name: clang-format
         description: Format files with ClangFormat.
-        entry: clang-format-14
+        entry: clang-format-15
         language: system
         files: \.(cpp|hpp)$
         args: ['-fallback-style=none', '-i']

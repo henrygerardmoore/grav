@@ -47,8 +47,8 @@ int main() {
 
   // 'global' variables
   entt::registry registry;
-  std::size_t width = 1920;
-  std::size_t height = 1080;
+  std::size_t const width = 1920;
+  std::size_t const height = 1080;
   auto const window = std::make_shared<sf::RenderWindow>(
       sf::VideoMode(width, height), std::string("N-body gravity simulator"));
   window->setFramerateLimit(1000u);
@@ -185,11 +185,11 @@ int main() {
   initial_spawn();
 
   InputHandler handler(window);
-  InputHandler::EventFunction close_function = [&](sf::Event /*unused*/) {
+  InputHandler::EventFunction const close_function = [&](sf::Event /*unused*/) {
     window->close();
   };
   handler.addCallback({sf::Event::Closed}, close_function);
-  InputHandler::EventFunction mouse_function = [&](sf::Event e) {
+  InputHandler::EventFunction const mouse_function = [&](sf::Event e) {
     static Eigen::Vector2f init_point;
     static auto init_time = std::chrono::steady_clock::now().time_since_epoch();
     auto mouse_pos = sf::Mouse::getPosition(*window);
@@ -211,15 +211,15 @@ int main() {
       {sf::Event::MouseButtonPressed, sf::Event::MouseButtonReleased},
       mouse_function);
 
-  InputHandler::EventFunction time_rate_function = [&](sf::Event e) {
+  InputHandler::EventFunction const time_rate_function = [&](sf::Event e) {
     // TODO(henrygerardmoore): use toggleable OSD instead of debug for relevant
     // info
     if (e.key.code == sf::Keyboard::Key::Equal) {
-      time_rate *= 1.25;
+      time_rate += 0.1;
       clamp_time_rate(time_rate);
       LOG_INFO(logger, "Time rate set to {}", time_rate);
     } else if (e.key.code == sf::Keyboard::Key::Dash) {
-      time_rate *= 0.75;
+      time_rate -= 0.1;
       clamp_time_rate(time_rate);
       LOG_INFO(logger, "Time rate set to {}", time_rate);
     } else if (e.key.code == sf::Keyboard::Key::Num0) {
@@ -229,8 +229,9 @@ int main() {
     } else if (e.key.code == sf::Keyboard::Key::P) {
       static float prev_time_rate = time_rate;
       if (time_rate == 0) {
-        time_rate = prev_time_rate;
+        std::swap(prev_time_rate, time_rate);
       } else {
+        prev_time_rate = time_rate;
         time_rate = 0;
       }
       LOG_INFO(logger, "Time rate set to {}", time_rate);
