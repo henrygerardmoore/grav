@@ -81,11 +81,11 @@ int main() {
     auto const window_size = window->getSize();
     float const x_interp =
         static_cast<float>(window_coords.x) / static_cast<float>(window_size.x);
-    float const x_pos = x_span * x_interp + x_lim_low;
+    float const x_pos = (x_span * x_interp) + x_lim_low;
 
-    float const y_interp = 1.f - static_cast<float>(window_coords.y) /
-                                     static_cast<float>(window_size.y);
-    float const y_pos = y_span * y_interp + y_lim_low;
+    float const y_interp = 1.f - (static_cast<float>(window_coords.y) /
+                                  static_cast<float>(window_size.y));
+    float const y_pos = (y_span * y_interp) + y_lim_low;
     return Eigen::Vector2f{x_pos, y_pos};
   };
   auto const integrate_acceleration = [&](float const timestep) {
